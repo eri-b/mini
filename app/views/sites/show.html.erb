@@ -2,12 +2,31 @@
 
 <h1>This is your SLUG: <%= @slug %></h1>
 
+<%= render 'shared/error_messages' %>
 
-<%= form_for @site, url: site_path(@site), method: :patch do |f| %>
+<hr>
+
+<%= form_for @site, url: site_body_path(@site.name), method: :patch do |f| %>
 
   <%= f.label :body %>
   <%= f.text_field :body %>
 
   <%= f.submit "Save changes" %>
 
+<% end %>
+
+<hr>
+
+
+  <%= form_for @site, url: site_pass_path(@site.name), method: :patch do |f| %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.submit "Add password" %>
+
+  <% end %>
+
+
+<% if false %>
 <% end %>
