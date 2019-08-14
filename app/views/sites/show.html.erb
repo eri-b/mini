@@ -1,3 +1,13 @@
 <p>This is a show page!</p>
 
 <h1>This is your SLUG: <%= @slug %></h1>
+
+
+<%= form_for @site, url: site_path(@site), method: :patch do |f| %>
+
+  <%= f.label :body %>
+  <%= f.text_field :body %>
+
+  <%= f.submit "Save changes" %>
+
+<% end %>
