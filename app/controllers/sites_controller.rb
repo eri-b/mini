@@ -19,11 +19,14 @@ class SitesController < ApplicationController
 
   end
 
-
+  def home
+    @slug = ('a'..'z').to_a.shuffle[0,8].join
+    redirect_to main_path(@slug)
+  end
 
   def update_body
     if @site.update_attributes(site_params)
-      redirect_to site_body_path(@site.name), notice: "Updated"
+      redirect_to site_body_path(@site.name), notice: "Updated body"
     else
       redirect_to site_body_path(@site.name), alert: "Update failed"
     end
@@ -32,7 +35,7 @@ class SitesController < ApplicationController
   def update_pass
 
     if @site.update_attributes(site_params)
-      redirect_to site_pass_path(@site.name), notice: "Updated"
+      redirect_to site_pass_path(@site.name), notice: "Updated password"
     else
       redirect_to site_pass_path(@site.name), alert: "Update failed"
     end
@@ -55,6 +58,10 @@ class SitesController < ApplicationController
       else
         #render that
       end
+    end
+
+    def pass_set?
+      #has pass already been set
     end
 
 end
