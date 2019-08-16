@@ -3,17 +3,20 @@ class SitesController < ApplicationController
   #before_action :editable?, only: [:show]
 
   def show
-    
+
     if @site.nil?
       puts 'site is nil'
       @site = Site.new(name: @slug)
       if @site.save
+        flash[:alert] = "All signed up. You page is #{@slug}"
       else
         flash[:alert] = "Site not saved. Letter, numbers, dashes, and periods accepted."
       end
     end
 
     @locked = @site.locked
+
+    @feed = @site.posts
 
   end
 

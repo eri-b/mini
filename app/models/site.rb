@@ -5,7 +5,7 @@ class Site < ApplicationRecord
   validates :name, presence: true, uniqueness: true, length: { maximum: 50 }, format: { with: VALID_NAME_REGEX }
 
   has_secure_password validations: false
-
+  has_many :posts, dependent: :destroy
   private
 
     def lock_status
