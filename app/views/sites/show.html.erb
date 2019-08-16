@@ -2,29 +2,17 @@
 
 <%= render 'shared/error_messages' %>
 
+<%= render 'update_body' %>
+<hr>
 <%= render 'posts/feed' %>
 <hr>
 
-<%= form_for @site, url: site_body_path(@site.name), method: :patch do |f| %>
-
-  <%= f.label :body %>
-  <%= f.text_field :body %>
-
-  <%= f.submit "Save changes" %>
-
-<% end %>
+<%= render 'posts/new_post' %>
 
 <hr>
 
-
-  <%= form_for @site, url: site_pass_path(@site.name), method: :patch do |f| %>
-
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-    <%= f.hidden_field :locked, value: true %>
-    <%= f.submit "Add password" %>
-
-  <% end %>
+<%= render 'password' %>
+  
 
 
 <% if false %>

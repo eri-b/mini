@@ -5,10 +5,10 @@ class SitesController < ApplicationController
   def show
 
     if @site.nil?
-      puts 'site is nil'
+
       @site = Site.new(name: @slug)
       if @site.save
-        flash[:alert] = "All signed up. You page is #{@slug}"
+        flash[:alert] = "Your site is ready :) Hi #{@slug}"
       else
         flash[:alert] = "Site not saved. Letter, numbers, dashes, and periods accepted."
       end

@@ -1,1 +1,6 @@
 <p>the feed should be here</p>
+<ul>
+<% @feed.each do |item| %>
+  <li><%= item.body %></li>
+<% end %>
+</ul>
