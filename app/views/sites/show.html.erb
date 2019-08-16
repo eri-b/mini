@@ -1,6 +1,4 @@
-<p>This is a show page!</p>
-
-<h1>This is your SLUG: <%= @slug %></h1>
+<p>Here's your page: <%= @slug %></p>
 
 <%= render 'shared/error_messages' %>
 
@@ -22,7 +20,7 @@
 
     <%= f.label :password %>
     <%= f.password_field :password %>
-
+    <%= f.hidden_field :locked, value: true %>
     <%= f.submit "Add password" %>
 
   <% end %>

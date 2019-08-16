@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_14_162352) do
+ActiveRecord::Schema.define(version: 2019_08_16_010047) do
+
+  create_table "posts", force: :cascade do |t|
+    t.text "body"
+    t.integer "site_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["site_id"], name: "index_posts_on_site_id"
+  end
 
   create_table "sites", force: :cascade do |t|
     t.string "name"

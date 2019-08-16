@@ -1,13 +1,11 @@
 class SitesController < ApplicationController
-  before_action :find_site, only: [:update_body, :update_pass]
-  before_action :editable?, only: [:update_body]
+  before_action :find_site
+  #before_action :editable?, only: [:show]
 
   def show
-    @slug = params[:id]
-
-    @site = Site.find_by(name: @slug)
-
+    
     if @site.nil?
+      puts 'site is nil'
       @site = Site.new(name: @slug)
       if @site.save
       else
@@ -45,18 +43,21 @@ class SitesController < ApplicationController
 
 
     def site_params
-     params.require(:site).permit(:name, :body, :password, :password_confirmation)
+      params.require(:site).permit(:name, :body, :locked, :password, :password_confirmation)
     end
 
     def find_site
-      @site = Site.find_by(name: params[:id])
+      @slug = params[:id]
+      @site = Site.find_by(name: @slug)
     end
 
     def editable?
-      if @site.locked == true
-        #render this
+      if @site.nil?
+        render :show
+      elsif @site.locked == false
+        render :show_read
       else
-        #render that
+        render :show
       end
     end
 
