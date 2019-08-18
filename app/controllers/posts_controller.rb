@@ -2,13 +2,14 @@ class PostsController < ApplicationController
 
 
   def create
-
+    
+    @site = Site.find_by(name: params[:post][:site])
     @post = @site.posts.build(post_params)
-    #puts post_params
+
     if @post.save
-      redirect_to main_path(@post.site), notice: 'Post was successfully created.'
+      redirect_to main_path(@post.site.name), notice: 'Post was successfully created.'
     else
-      flash[:notice] = 'Post was not created.'
+      redirect_to main_path(@post.site.name), notice: 'Post was not created.'
     end
   end
 
@@ -18,8 +19,12 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:body, :site)
+    params.require(:post).permit(:body)
   end
 
+  def find_site
+    @slug = params[:id]
+    @site = Site.find_by(name: @slug)
+  end
 
 end

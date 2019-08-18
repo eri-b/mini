@@ -1,8 +1,8 @@
-<%= form_for @site.posts.build, url: posts_path, method: :post do |f| %>
+<%= form_for Post.new do |f| %>
 
   <%= f.label :Post %>
   <%= f.text_field :body %>
-
+  <%= f.hidden_field :site, value: @site.name %>
   <%= f.submit "Add post" %>
 
 <% end %>

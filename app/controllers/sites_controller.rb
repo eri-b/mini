@@ -18,6 +18,7 @@ class SitesController < ApplicationController
 
     @feed = @site.posts
 
+
   end
 
   def home
