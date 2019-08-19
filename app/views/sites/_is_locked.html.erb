@@ -1,14 +1,14 @@
 <% if @site.locked %>
-<p>Site is private</p>
-<% else %>
-<p>Site is public</p>
+  <p>status: Private</p>
+  <% else %>
+  <p>status: Public</p>
 <% end %>
 
 
 
 
-<% if session[@site.name.to_sym] == "unlocked" %>
+<% if session[@site.name.to_sym] == "unlocked" && @site.locked %>
+  <p>currently: Unlocked</p>
+  <%= button_to "Remove password", d_site_pass_path(@site.name), method: :patch %>
+<% end %>
 <hr>
-<p>Site is temporarily unlocked</p>
-<button>Make public?</button>
-<% end %>

@@ -3,9 +3,9 @@
 <%= render 'shared/error_messages' %>
 
 <%= render 'is_locked' %>
-<hr>
+
 <%= render 'posts/feed' %>
-<hr>
+
 
 <%= render 'posts/new_post' if !@site.locked || (@site.locked && session[@site.name.to_sym] == "unlocked") %>
 

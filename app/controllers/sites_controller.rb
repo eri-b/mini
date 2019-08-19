@@ -1,6 +1,6 @@
 class SitesController < ApplicationController
-  before_action :find_site, only: [:show, :update_pass]
-  #before_action :editable?, only: [:show]
+  before_action :find_site, only: [:show, :add_password, :remove_password]
+  before_action :unlocked?, only: [:add_password, :remove_password]
 
   def show
 
@@ -22,8 +22,7 @@ class SitesController < ApplicationController
     redirect_to main_path(@slug)
   end
 
-  def update_pass
-
+  def add_password
     if @site.update_attributes(pass_params)
       lock_site
       redirect_to site_pass_path(@site.name), notice: "Updated password"
@@ -32,11 +31,19 @@ class SitesController < ApplicationController
     end
   end
 
+  def remove_password
+    if unlock_site
+      redirect_to site_pass_path(@site.name), notice: "Removed password"
+    else
+      redirect_to site_pass_path(@site.name), notice: "Update failed"
+    end
+  end
+
   private
 
 
     def pass_params
-      params.require(:site).permit(:locked, :password, :password_confirmation)
+      params.require(:site).permit(:password, :password_confirmation)
     end
 
     def find_site
@@ -48,18 +55,17 @@ class SitesController < ApplicationController
       @site.update_attributes(locked: true)
     end
 
-    def editable?
-      if @site.nil?
-        render :show
-      elsif @site.locked == false
-        render :show_read
-      else
-        render :show
+    def unlock_site
+      session.delete(@site.name.to_sym)
+      @site.update_attributes(locked: false)
+    end
+
+    # make sure site is editable before updating password (if already set)
+    def unlocked?
+      if @site.locked && session[@site.name.to_sym] != "unlocked"
+        redirect_to main_path(@site.name), notice: 'Site is locked.'
       end
     end
 
-    def pass_set?
-      #has pass already been set
-    end
 
 end
