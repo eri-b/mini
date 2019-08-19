@@ -1,15 +1,15 @@
 class PostsController < ApplicationController
-
+  before_action :unlocked?
 
   def create
-    
+
     @site = Site.find_by(name: params[:post][:site])
     @post = @site.posts.build(post_params)
 
     if @post.save
       redirect_to main_path(@post.site.name), notice: 'Post was successfully created.'
     else
-      redirect_to main_path(@post.site.name), notice: 'Post was not created.'
+      render 'sites/show'
     end
   end
 
@@ -22,9 +22,12 @@ class PostsController < ApplicationController
     params.require(:post).permit(:body)
   end
 
-  def find_site
-    @slug = params[:id]
+  def unlocked?
+    @slug = params[:post][:site]
     @site = Site.find_by(name: @slug)
+    if @site.locked && session[@site.name.to_sym] != "unlocked"
+      redirect_to main_path(@site.name), notice: 'Site is locked.'
+    end
   end
 
 end

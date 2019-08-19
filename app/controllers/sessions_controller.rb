@@ -1,13 +1,15 @@
 class SessionsController < ApplicationController
   def create
 
-    site = Site.find_by(name: params[:id])
+    #render 'sites/temp'
+    site = Site.find_by(name: params[:session][:site])
     if site && site.authenticate(params[:session][:password])
-      # Log the user in and redirect to the user's show page.
-      puts 'something happened?'
+      #(session[:site_name] ||= []) << site.name
+      session[site.name.to_sym] = "unlocked"
+      redirect_to main_path(site.name), notice: 'Should unlock'
     else
       flash.now[:danger] = 'Invalid password'
-      render 'new'
+      redirect_to main_path(site.name), notice: 'incorrect password'
     end
   end
 end

@@ -7,14 +7,13 @@
 <%= render 'posts/feed' %>
 <hr>
 
-<%= render 'posts/new_post' if !@site.locked %>
+<%= render 'posts/new_post' if !@site.locked || (@site.locked && session[@site.name.to_sym] == "unlocked") %>
 
 <hr>
 
-<%= render 'password' if !@site.locked %>
+<%= render 'set_password' if !@site.locked %>
 
-<%= render 'login' if @site.locked %>
-
+<%= render 'login' if @site.locked && session[@site.name.to_sym] != "unlocked" %>
 
 
 <% if false %>

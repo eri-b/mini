@@ -1,5 +1,14 @@
 <% if @site.locked %>
-<p>Site is locked!</p>
+<p>Site is private</p>
 <% else %>
-<p>Site is not locked</p>
+<p>Site is public</p>
+<% end %>
+
+
+
+
+<% if session[@site.name.to_sym] == "unlocked" %>
+<hr>
+<p>Site is temporarily unlocked</p>
+<button>Make public?</button>
 <% end %>
