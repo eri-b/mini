@@ -1,5 +1,4 @@
 <%= form_for Post.new do |f| %>
-
   <%= f.label :Post %>
   <%= f.text_field :body %>
   <%= f.hidden_field :site, value: @site.name %>
