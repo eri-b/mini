@@ -1,1 +1,6 @@
 <p>FORM TO LOGIN</p>
+<%= form_for(:session, url: unlock_path) do |f| %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.submit "Unlock" %>
+<% end %>

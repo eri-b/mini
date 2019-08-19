@@ -7,7 +7,7 @@
 <%= render 'posts/feed' %>
 <hr>
 
-<%= render 'posts/new_post' %>
+<%= render 'posts/new_post' if !@site.locked %>
 
 <hr>
 
