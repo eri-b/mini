@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
-  def create
 
+  def create
     site = Site.find_by(name: params[:session][:site])
     if site && site.authenticate(params[:session][:password])
       session[site.name.to_sym] = "session-unlocked"
@@ -10,4 +10,5 @@ class SessionsController < ApplicationController
       redirect_to main_path(site.name), notice: 'incorrect password'
     end
   end
+
 end

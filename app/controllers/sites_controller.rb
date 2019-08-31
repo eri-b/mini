@@ -1,6 +1,8 @@
 class SitesController < ApplicationController
   before_action :find_site, only: [:show, :add_password, :remove_password]
   before_action :unlocked?, only: [:add_password, :remove_password]
+  before_action :have_posts?, only: [:add_password]
+  before_action :expired?, only: [:show]
 
   def show
 
@@ -64,6 +66,18 @@ class SitesController < ApplicationController
     def unlocked?
       if @site.locked && session[@site.name.to_sym] != "unlocked"
         redirect_to main_path(@site.name), notice: 'Site is locked.'
+      end
+    end
+
+    def have_posts?
+      if @site.posts.count == 0
+        redirect_to main_path(@site.name), notice: 'Cannot add password to empty site.'
+      end
+    end
+
+    def expired?
+      if Time.now - 30.days > @site.posts.last.updated_at
+        @site.destroy
       end
     end
 
