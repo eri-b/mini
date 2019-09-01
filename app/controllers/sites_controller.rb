@@ -1,8 +1,8 @@
 class SitesController < ApplicationController
+  before_action :expired?, only: [:show]
   before_action :find_site, only: [:show, :add_password, :remove_password]
   before_action :unlocked?, only: [:add_password, :remove_password]
   before_action :have_posts?, only: [:add_password]
-  before_action :expired?, only: [:show]
 
   def show
 
