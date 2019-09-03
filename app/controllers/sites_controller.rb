@@ -1,6 +1,5 @@
 class SitesController < ApplicationController
   before_action :find_site, only: [:show, :add_password, :remove_password]
-  # before_action :expired?, only: [:show]
   before_action :unlocked?, only: [:add_password, :remove_password]
   before_action :have_posts?, only: [:add_password]
 
@@ -82,10 +81,11 @@ class SitesController < ApplicationController
     def expired?
       last_post = @site.posts.last
       if last_post.present?
-        @days_til_expire = 30 - (Time.zone.now - last_post.updated_at)/(3600*24)
+        activity_limit = 30
+        @days_til_expire = activity_limit - (Time.zone.now - last_post.updated_at)/(3600*24)
         if @days_til_expire < 0
           @site.destroy
-          redirect_to main_path(@site.name)
+          redirect_to main_path(@site.name), notice: 'Previous site here was deleted due to inactivity.'
         end
       end
 

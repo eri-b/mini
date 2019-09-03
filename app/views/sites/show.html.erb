@@ -22,5 +22,5 @@
 <p>If no messages, cannot save password.</p>
 <p>Sites deleted after 30 days of inactivity.</p>
 <% if @feed.present? %>
-  <p><%= @days_til_expire.to_i %> days until expiration</p>
+  <p><%= @days_til_expire.to_i %> days until self-destruction.</p>
 <% end %>
