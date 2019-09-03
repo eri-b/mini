@@ -1,8 +1,7 @@
 <%= form_for Post.new do |f| %>
 
-  <%= f.label :Post %>
-  <%= f.text_field :body %>
+  <%= f.text_area :body , class: "textarea"%>
   <%= f.hidden_field :site, value: @site.name %>
-  <%= f.submit "Add post" %>
+  <%= f.submit "Post", class: "button is-small" %>
 
 <% end %>

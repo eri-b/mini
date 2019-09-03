@@ -1,10 +1,9 @@
-<p>the feed should be here</p>
-<ul>
+<ul id="feed">
 <% @feed.each do |item| %>
   <li>
     <%= item.body %>
     <% if !@site.locked || (@site.locked && session[@site.name.to_sym] == "unlocked") %>
-      <%= button_to "Delete", post_path(item.id), data: { confirm: "Are you sure?" }, method: :delete %>
+      <%= button_to "Delete", post_path(item.id), data: { confirm: "Are you sure?" }, method: :delete, class: "delete is-small" %>
     <% end %>
   </li>
 <% end %>

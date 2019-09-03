@@ -4,11 +4,11 @@
 
 <%= render 'is_locked' %>
 
-<%= render 'posts/feed' %>
+
 
 
 <%= render 'posts/new_post' if !@site.locked || (@site.locked && session[@site.name.to_sym] == "session-unlocked") %>
-
+<%= render 'posts/feed' %>
 <hr>
 
 <%= render 'set_password' if !@site.locked %>
@@ -16,8 +16,6 @@
 <%= render 'login' if @site.locked && session[@site.name.to_sym] != "session-unlocked" %>
 
 
-<% if false %>
-<% end %>
 <hr>
 <p>If no messages, cannot save password.</p>
 <p>Sites deleted after 30 days of inactivity.</p>

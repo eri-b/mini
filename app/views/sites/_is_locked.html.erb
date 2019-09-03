@@ -1,7 +1,7 @@
 <% if @site.locked %>
-  <p>status: Private</p>
+  <p><strong><%= @site.name %></strong> / <span class="has-text-danger">locked ***</span></p>
   <% else %>
-  <p>status: Public</p>
+  <p><strong><%= @site.name %></strong> / <span class="has-text-success">open ~~~</span></p>
 <% end %>
 
 
