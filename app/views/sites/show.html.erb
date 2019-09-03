@@ -20,4 +20,7 @@
 <% end %>
 <hr>
 <p>If no messages, cannot save password.</p>
-<p>Messages only live for 7 days</p>
+<p>Sites deleted after 30 days of inactivity.</p>
+<% if @feed.present? %>
+  <p><%= @days_til_expire.to_i %> days until expiration</p>
+<% end %>
