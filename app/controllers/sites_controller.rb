@@ -8,13 +8,13 @@ class SitesController < ApplicationController
     if @site.nil?
       @site = Site.new(name: @slug)
       if @site.save
-        flash[:alert] = "Your site is ready :) Hi #{@slug}"
+        flash[:notice] = "Your site is ready :) Hi #{@slug}"
       else
         flash[:alert] = "Site not saved. Letter, numbers, dashes, and periods accepted."
       end
     end
 
-    @feed = @site.posts
+    @feed = @site.posts.order("created_at DESC")
 
   end
 
@@ -36,7 +36,7 @@ class SitesController < ApplicationController
     if unlock_site
       redirect_to site_pass_path(@site.name), notice: "Removed password"
     else
-      redirect_to site_pass_path(@site.name), notice: "Update failed"
+      redirect_to site_pass_path(@site.name), alert: "Update failed"
     end
   end
 
@@ -66,7 +66,7 @@ class SitesController < ApplicationController
 
     # make sure site is editable before updating password (if already set)
     def unlocked?
-      if @site.locked && session[@site.name.to_sym] != "unlocked"
+      if @site.locked && session[@site.name.to_sym] != "session-unlocked"
         redirect_to main_path(@site.name), notice: 'Site is locked.'
       end
     end

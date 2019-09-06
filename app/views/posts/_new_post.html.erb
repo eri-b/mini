@@ -1,7 +1,7 @@
-<%= form_for Post.new do |f| %>
+<%= form_for Post.new, :html => {:class => 'level-right'} do |f| %>
 
-  <%= f.text_area :body , class: "textarea"%>
+  <%= f.text_area :body , class: "textarea is-small", rows:1 %>
   <%= f.hidden_field :site, value: @site.name %>
-  <%= f.submit "Post", class: "button is-small" %>
+  <%= f.submit "Post", class: "button is-small is-primary post" %>
 
 <% end %>

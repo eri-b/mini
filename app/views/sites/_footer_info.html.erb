@@ -1,0 +1,26 @@
+<footer class="level">
+<% if @site.locked %>
+
+     <span class="has-text-danger is-size-6 level-item">password enabled ***</span>
+     <% if session[@site.name.to_sym] == "session-unlocked" && @site.locked %>
+      <%= button_to "Remove", d_site_pass_path(@site.name), data: { confirm: "Are you sure? Anyone will be able to add posts." }, class: "button is-small is-light remove level-item", method: :patch %>
+       <span class="has-text-info is-size-6 level-item">session unlocked for you</span>
+     <% end %>
+
+  <% else %>
+  <span class="has-text-success is-size-6 level-item">free and easy mode ~~~</span>
+<% end %>
+
+
+<% if !@site.locked && @feed.present? %>
+  <%= form_for @site, url: site_pass_path(@site.name), :html => {:class => 'level-item'}, method: :patch do |f| %>
+    <%= f.password_field :password, class: "input is-small" %>
+    <%= f.submit "Add password", class: "button is-small is-light" %>
+  <% end %>
+
+<% end %>
+
+<% if @feed.present? %>
+  <span class="has-text-grey is-size-6 level-item"><%= @days_til_expire.to_i %> days until self-destruction</span>
+<% end %>
+</footer>

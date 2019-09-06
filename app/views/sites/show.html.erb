@@ -1,24 +1,24 @@
-
+<header class="level">
+  <strong class="level-left"><%= @site.name %></strong>
+  <%= render 'posts/new_post' if !@site.locked || (@site.locked && session[@site.name.to_sym] == "session-unlocked") %>
+</header>
 
 <%= render 'shared/error_messages' %>
 
-<%= render 'is_locked' %>
+<section id="content">
+  <% if notice %>
+      <p class="notification is-primary"><button class="delete"></button><%= notice %></p>
+  <% end %>
+  <% if alert %>
+      <p class="notification is-danger"><button class="delete"></button><%= alert %></p>
+  <% end %>
+
+  <%= render 'posts/feed' %>
+</section>
 
 
 
-
-<%= render 'posts/new_post' if !@site.locked || (@site.locked && session[@site.name.to_sym] == "session-unlocked") %>
-<%= render 'posts/feed' %>
-<hr>
-
-<%= render 'set_password' if !@site.locked %>
 
 <%= render 'login' if @site.locked && session[@site.name.to_sym] != "session-unlocked" %>
 
-
-<hr>
-<p>If no messages, cannot save password.</p>
-<p>Sites deleted after 30 days of inactivity.</p>
-<% if @feed.present? %>
-  <p><%= @days_til_expire.to_i %> days until self-destruction.</p>
-<% end %>
+<%= render 'footer_info' %>

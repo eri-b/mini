@@ -1,9 +1,10 @@
 <ul id="feed">
 <% @feed.each do |item| %>
-  <li>
+  <li class="box">
     <%= item.body %>
-    <% if !@site.locked || (@site.locked && session[@site.name.to_sym] == "unlocked") %>
-      <%= button_to "Delete", post_path(item.id), data: { confirm: "Are you sure?" }, method: :delete, class: "delete is-small" %>
+    <div class="date is-size-7 has-text-grey"><%= item.updated_at.localtime.to_formatted_s(:short) %></div>
+    <% if !@site.locked || (@site.locked && session[@site.name.to_sym] == "session-unlocked") %>
+      <%= link_to "Delete", post_path(item.id), data: { confirm: "Are you sure?" }, method: :delete, class: "delete is-small" %>
     <% end %>
   </li>
 <% end %>

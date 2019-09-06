@@ -1,0 +1,88 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+$border-color: #f5f5f5;
+$padding:1.5em;
+
+body{padding:$padding;}
+#feed li{
+  // background:#ffefef;
+  padding:10px;
+  border-radius:5px;
+  margin:0 0 15px 0;
+  position:relative;
+  a.delete{
+    position: absolute;
+    right: .5rem;
+    top: .5rem;
+  }
+  .date{
+    margin-top:.5em;
+  }
+}
+header{
+  border-bottom: 2px solid $border-color;
+  padding:$padding/2 0;
+  position:fixed;
+  background:white;
+  left:20px;
+  right:20px;
+  top:0;
+  form{
+    textarea{
+      margin-right:20px;
+      width:280px;
+      height:35px;
+    }
+    input[type="submit"]{
+      height:100%;
+      height:35px !important;
+    }
+  }
+}
+
+footer{
+  border-top: 2px solid $border-color;
+  padding:$padding 0;
+  position:fixed;
+  bottom:0;
+  left:20px;
+  right:20px;
+  background:white;
+  form{
+    display:inline-block;
+    input[type="password"]{
+      max-width:140px;
+    }
+  }
+}
+
+form.button_to{
+  display:inline-block;
+}
+
+span.spaced{margin:0 10px;}
+
+section#content{
+
+  padding:$padding 0;
+  width:70%;
+  margin-left:15%;
+  margin-top:3em;
+  margin-bottom:3em;
+}
+
+.button.remove{margin-left:10px;}

@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     @post = @site.posts.build(post_params)
 
     if @post.save
-      redirect_to main_path(@post.site.name), notice: 'Post was successfully created.'
+      redirect_to main_path(@post.site.name)
     else
       render 'sites/show'
     end
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
   def editable?
     @slug = params[:post][:site]
     @site = Site.find_by(name: @slug)
-    if @site.locked && session[@site.name.to_sym] != "unlocked"
+    if @site.locked && session[@site.name.to_sym] != "session-unlocked"
       redirect_to main_path(@site.name), notice: 'Site is locked.'
     end
   end
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
   def deletable?
     @post = Post.find(params[:id])
     @site = @post.site
-    if @site.locked && session[@site.name.to_sym] != "unlocked"
+    if @site.locked && session[@site.name.to_sym] != "session-unlocked"
       redirect_to main_path(@site.name), notice: 'Site is locked.'
     end
   end
