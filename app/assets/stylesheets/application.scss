@@ -16,42 +16,10 @@
 
 $border-color: #f5f5f5;
 $padding:1.5em;
-
-body{padding:$padding;}
-#feed li{
-  // background:#ffefef;
-  padding:10px;
-  border-radius:5px;
-  margin:0 0 15px 0;
-  position:relative;
-  a.delete{
-    position: absolute;
-    right: .5rem;
-    top: .5rem;
-  }
-  .date{
-    margin-top:.5em;
-  }
-}
-header{
-  border-bottom: 2px solid $border-color;
-  padding:$padding/2 0;
-  position:fixed;
-  background:white;
-  left:20px;
-  right:20px;
-  top:0;
-  form{
-    textarea{
-      margin-right:20px;
-      width:280px;
-      height:35px;
-    }
-    input[type="submit"]{
-      height:100%;
-      height:35px !important;
-    }
-  }
+$v-start: 10vh;
+body{
+  
+  height:100%;
 }
 
 footer{
@@ -62,27 +30,56 @@ footer{
   left:20px;
   right:20px;
   background:white;
-  form{
-    display:inline-block;
-    input[type="password"]{
-      max-width:140px;
-    }
-  }
 }
 
 form.button_to{
   display:inline-block;
 }
 
-span.spaced{margin:0 10px;}
+section#meta{
+  width:30vw;
+  position:fixed;
+  padding:$padding;
+  height:100vh;
 
-section#content{
+  > form{
+    position:absolute;
+    top:$v-start;
+    width:80%;
+    textarea{
 
-  padding:$padding 0;
-  width:70%;
-  margin-left:15%;
-  margin-top:3em;
-  margin-bottom:3em;
+    }
+    input[type="submit"]{
+      margin-top:2vh;
+    }
+  }
+  #meta-info{
+    position:absolute;
+    bottom:5vh;
+    p{
+      padding: 5px 0;
+    }
+  }
 }
 
-.button.remove{margin-left:10px;}
+section#content{
+  margin-left:35vw;
+  padding-top: $v-start;
+  width: 35vw;
+  #feed li{
+    background:#fff;
+    padding:10px;
+    border-radius:5px;
+    margin:0 0 25px 0;
+    position:relative;
+
+    a.delete{
+      position: absolute;
+      right: .5rem;
+      top: .5rem;
+    }
+    .date{
+      margin-top:.5em;
+    }
+  }
+}

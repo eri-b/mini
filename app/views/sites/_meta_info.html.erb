@@ -1,0 +1,29 @@
+<div id="meta-info">
+<% if @site.locked %>
+
+      <p class="has-text-grey ">Password enabled</p>
+      <% if session[@site.name.to_sym] == "session-unlocked" && @site.locked %>
+      <p>
+       <%= button_to "Remove password", d_site_pass_path(@site.name), data: { confirm: "Are you sure? Anyone will be able to add posts." }, class: "button is-small is-light remove", method: :patch %>
+       </p>
+      <p class="has-text-grey ">Session unlocked for you</p>
+     <% end %>
+
+  <% else %>
+  <p class="has-text-success">Free and easy mode</p>
+<% end %>
+
+
+<% if !@site.locked && @feed.present? %>
+  <%= form_for @site, url: site_pass_path(@site.name), :html => {:class => ''}, method: :patch do |f| %>
+    <%= f.password_field :password, class: "input is-small" %>
+    <%= f.submit "Add password", class: "button is-small is-light" %>
+  <% end %>
+<% end %>
+
+<%= render 'login' if @site.locked && session[@site.name.to_sym] != "session-unlocked" %>
+
+<% if @feed.present? %>
+  <p class="has-text-grey "><%= @days_til_expire.to_i %> days until self-destruction</p>
+<% end %>
+</div>

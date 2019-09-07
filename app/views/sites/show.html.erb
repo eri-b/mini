@@ -1,11 +1,14 @@
-<header class="level">
-  <strong class="level-left"><%= @site.name %></strong>
+<section id="meta">
+  <header>
+    <span class="has-text-grey-light">/</span>
+    <strong class=""><%= @site.name %></strong>
+  </header>
   <%= render 'posts/new_post' if !@site.locked || (@site.locked && session[@site.name.to_sym] == "session-unlocked") %>
-</header>
+  <%= render 'meta_info' %>
+</section>
 
-<%= render 'shared/error_messages' %>
-
-<section id="content">
+<section id="content" >
+  <%= render 'shared/error_messages' %>
   <% if notice %>
       <p class="notification is-primary"><button class="delete"></button><%= notice %></p>
   <% end %>
@@ -15,10 +18,3 @@
 
   <%= render 'posts/feed' %>
 </section>
-
-
-
-
-<%= render 'login' if @site.locked && session[@site.name.to_sym] != "session-unlocked" %>
-
-<%= render 'footer_info' %>

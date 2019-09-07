@@ -1,6 +1,6 @@
-<%= form_for Post.new, :html => {:class => 'level-right'} do |f| %>
+<%= form_for Post.new, :html => {:class => ''} do |f| %>
 
-  <%= f.text_area :body , class: "textarea is-small", rows:1 %>
+  <%= f.text_area :body , class: "textarea is-small", rows:3 %>
   <%= f.hidden_field :site, value: @site.name %>
   <%= f.submit "Post", class: "button is-small is-primary post" %>
 

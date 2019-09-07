@@ -1,7 +1,5 @@
-<p>FORM TO LOGIN</p>
 <%= form_for(:session, url: unlock_path) do |f| %>
-  <%= f.label :password %>
   <%= f.password_field :password %>
   <%= f.hidden_field :site, value: @site.name %>
-  <%= f.submit "Unlock" %>
+  <%= f.submit "Login" , class: "button is-small is-light" %>
 <% end %>

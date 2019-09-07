@@ -81,7 +81,7 @@ class SitesController < ApplicationController
     def expired?
       last_post = @site.posts.last
       if last_post.present?
-        activity_limit = 30
+        activity_limit = 31
         @days_til_expire = activity_limit - (Time.zone.now - last_post.updated_at)/(3600*24)
         if @days_til_expire < 0
           @site.destroy
