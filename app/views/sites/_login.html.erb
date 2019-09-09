@@ -1,5 +1,11 @@
 <%= form_for(:session, url: unlock_path) do |f| %>
-  <%= f.password_field :password %>
-  <%= f.hidden_field :site, value: @site.name %>
-  <%= f.submit "Login" , class: "button is-small is-light" %>
+<%= f.hidden_field :site, value: @site.name %>
+<div class="field has-addons">
+  <div class="control">
+    <%= f.password_field :password, class: "input" %>
+  </div>
+  <div class="control">
+    <%= f.submit "Login" , class: "button" %>
+  </div>
+</div>
 <% end %>

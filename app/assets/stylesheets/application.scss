@@ -17,8 +17,10 @@
 $border-color: #f5f5f5;
 $padding:1.5em;
 $v-start: 10vh;
+$bottom: 4vh;
+
 body{
-  
+
   height:100%;
 }
 
@@ -36,6 +38,8 @@ form.button_to{
   display:inline-block;
 }
 
+
+
 section#meta{
   width:30vw;
   position:fixed;
@@ -46,22 +50,25 @@ section#meta{
     position:absolute;
     top:$v-start;
     width:80%;
-    textarea{
-
-    }
     input[type="submit"]{
       margin-top:2vh;
     }
   }
+
   #meta-info{
     position:absolute;
-    bottom:5vh;
+    bottom:$bottom;
     p{
       padding: 5px 0;
     }
+
   }
 }
-
+#expire{
+  position:fixed;
+  bottom: $bottom;
+  right: $padding;
+}
 section#content{
   margin-left:35vw;
   padding-top: $v-start;

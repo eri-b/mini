@@ -8,7 +8,7 @@ class SitesController < ApplicationController
     if @site.nil?
       @site = Site.new(name: @slug)
       if @site.save
-        flash[:notice] = "Your site is ready :) Hi #{@slug}"
+        flash[:notice] = "Your site is ready.  Hi #{@slug} :)"
       else
         flash[:alert] = "Site not saved. Letter, numbers, dashes, and periods accepted."
       end
