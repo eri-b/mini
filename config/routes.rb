@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:create, :destroy]
 
   post   '/unlock',   to: 'sessions#create', as: 'unlock'
+  delete '/logout/:id',  to: 'sessions#destroy', as: 'logout'
 
   root 'sites#home'
 

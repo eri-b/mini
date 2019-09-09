@@ -1,0 +1,16 @@
+<% if @site.locked %>
+
+      <% if session[@site.name.to_sym] == "session-unlocked" && @site.locked %>
+      <div class="dropdown-item">
+        <%= button_to "Logout", logout_path(@site.name), class: "button remove is-light", method: :delete %>
+       </div>
+       <hr class="dropdown-divider">
+      <div class="dropdown-item">
+        <%= button_to "Remove password", d_site_pass_path(@site.name), data: { confirm: "Are you sure? Anyone will be able to add posts." }, class: "button remove is-light", method: :patch %>
+       </div>
+       <hr class="dropdown-divider">
+     <% end %>
+  <% else %>
+
+
+<% end %>

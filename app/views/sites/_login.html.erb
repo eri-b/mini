@@ -1,11 +1,16 @@
-<%= form_for(:session, url: unlock_path) do |f| %>
-<%= f.hidden_field :site, value: @site.name %>
-<div class="field has-addons">
-  <div class="control">
-    <%= f.password_field :password, class: "input" %>
+<% if @site.locked && session[@site.name.to_sym] != "session-unlocked" %>
+<div class="dropdown-item">
+  <%= form_for(:session, url: unlock_path) do |f| %>
+  <%= f.hidden_field :site, value: @site.name %>
+  <div class="field has-addons">
+    <div class="control">
+      <%= f.password_field :password, class: "input" %>
+    </div>
+    <div class="control">
+      <%= f.submit "Login" , class: "button" %>
+    </div>
   </div>
-  <div class="control">
-    <%= f.submit "Login" , class: "button" %>
-  </div>
+  <% end %>
 </div>
+<hr class="dropdown-divider">
 <% end %>

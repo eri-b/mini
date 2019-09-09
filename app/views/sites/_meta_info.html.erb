@@ -1,33 +1,27 @@
 <div id="meta-info">
-<% if @site.locked %>
 
-
-      <% if session[@site.name.to_sym] == "session-unlocked" && @site.locked %>
-      <p>
-       <%= button_to "Remove password", d_site_pass_path(@site.name), data: { confirm: "Are you sure? Anyone will be able to add posts." }, class: "button remove", method: :patch %>
-       </p>
-
-     <% end %>
-
-  <% else %>
-
-<% end %>
-
-
-<% if !@site.locked && @feed.present? %>
-  <%= form_for @site, url: site_pass_path(@site.name), :html => {:class => ''}, method: :patch do |f| %>
-  <div class="field has-addons">
-    <div class="control">
-    <%= f.password_field :password, class: "input" %>
+  <div class="dropdown is-up">
+    <div class="dropdown-trigger">
+      <button class="button is-white" aria-haspopup="true" >
+        <span class="icon has-text-dark">
+          <i class="fas fa-info-circle"></i>
+        </span>
+      </button>
     </div>
-    <div class="control">
-    <%= f.submit "Add password", class: "button" %>
+    <div class="dropdown-menu">
+      <div class="dropdown-content">
+        <%= render 'when-locked'  %>
+        <%= render 'login'  %>
+        <%= render 'addpass' %>
+        <%= render 'intro' %>
+        <div class="dropdown-item">
+          <% if @feed.present? %>
+            <p id="expire"><%= @days_til_expire.to_i %> days until self-destruction</p>
+            <p class="has-text-grey">Site is deleted after 30 days of inactivity</p>
+          <% end %>
+        </div>
+
+      </div>
     </div>
   </div>
-  <% end %>
-<% end %>
-
-<%= render 'login' if @site.locked && session[@site.name.to_sym] != "session-unlocked" %>
-
-
 </div>

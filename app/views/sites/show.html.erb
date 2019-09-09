@@ -5,19 +5,18 @@
   </header>
   <%= render 'posts/new_post' if !@site.locked || (@site.locked && session[@site.name.to_sym] == "session-unlocked") %>
   <%= render 'meta_info' %>
+
 </section>
 
 <section id="content" >
   <%= render 'shared/error_messages' %>
   <% if notice %>
-      <p class="notification is-primary"><button class="delete"></button><%= notice %></p>
+      <p class="notification is-warning"><button class="delete"></button><%= notice %></p>
   <% end %>
   <% if alert %>
       <p class="notification is-danger"><button class="delete"></button><%= alert %></p>
   <% end %>
 
   <%= render 'posts/feed' %>
+
 </section>
-<% if @feed.present? %>
-  <p class="has-text-grey" id="expire"><span class="is-family-code has-text-black"><%= @days_til_expire.to_i %></span> days until self-destruction</p>
-<% end %>
