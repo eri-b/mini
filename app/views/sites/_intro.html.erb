@@ -1,4 +1,4 @@
-<% if  @feed.empty? %>
+<% if  @feed.empty? && !@site.locked %>
 <div class="dropdown-item">
 Password can be added after first post
 </div>

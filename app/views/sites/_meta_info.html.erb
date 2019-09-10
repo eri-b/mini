@@ -14,13 +14,12 @@
         <%= render 'login'  %>
         <%= render 'addpass' %>
         <%= render 'intro' %>
-        <div class="dropdown-item">
-          <% if @feed.present? %>
+        <% if @feed.present? %>
+          <div class="dropdown-item">
             <p id="expire"><%= @days_til_expire.to_i %> days until self-destruction</p>
             <p class="has-text-grey">Site is deleted after 30 days of inactivity</p>
-          <% end %>
-        </div>
-
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
