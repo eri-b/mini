@@ -16,7 +16,7 @@
 //= require_tree .
 
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbolinks:load', () => {
   (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
     $notification = $delete.parentNode;
     $delete.addEventListener('click', () => {
