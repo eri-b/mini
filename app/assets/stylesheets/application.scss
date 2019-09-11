@@ -78,7 +78,9 @@ section#content{
     border-radius:5px;
     margin:0 0 25px 0;
     position:relative;
-
+    p{
+      margin:5px 0;
+    }
     a.delete{
       position: absolute;
       right: .5rem;
