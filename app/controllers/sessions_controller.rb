@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     site = Site.find_by(name: params[:session][:site])
     if site && site.authenticate(params[:session][:password])
       session[site.name.to_sym] = "session-unlocked"
-      redirect_to main_path(site.name), notice: 'Temporarily unlocked'
+      redirect_to main_path(site.name), notice: 'Logged in. Free to add/delete posts'
     else
       flash.now[:danger] = 'Invalid password'
       redirect_to main_path(site.name), notice: 'Incorrect password'
