@@ -10,7 +10,7 @@ class SitesController < ApplicationController
       if @site.save
         flash.now[:notice] = "Your site is ready.  Hi #{@slug} :)"
       else
-        flash[:alert] = "Site not saved. Letter, numbers, dashes, and periods accepted."
+        redirect_to main_path("faq"), alert: "Site not saved. Letter, numbers, and dashes accepted."
       end
     end
 
