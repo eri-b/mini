@@ -48,7 +48,7 @@ class SitesController < ApplicationController
     end
 
     def find_site
-      @slug = params[:id]
+      @slug = params[:id].downcase
       @site = Site.find_by(name: @slug)
       if @site.present?
         expired?
