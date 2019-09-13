@@ -88,8 +88,6 @@ class SitesController < ApplicationController
           redirect_to main_path(@site.name), notice: 'Previous site here was deleted due to inactivity.'
         end
       end
-
-
     end
 
 
