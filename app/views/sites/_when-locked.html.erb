@@ -1,6 +1,6 @@
 <% if @site.locked %>
 
-      <% if session[@site.name.to_sym] == "session-unlocked" && @site.locked %>
+      <% if logged_in? %>
       <div class="dropdown-item">
         <%= button_to "Logout", logout_path(@site.name), class: "button remove is-light", method: :delete %>
        </div>

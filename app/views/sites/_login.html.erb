@@ -1,4 +1,4 @@
-<% if @site.locked && session[@site.name.to_sym] != "session-unlocked" %>
+<% if logged_out?%>
 <div class="dropdown-item">
   <%= form_for(:session, url: unlock_path) do |f| %>
   <%= f.hidden_field :site, value: @site.name %>

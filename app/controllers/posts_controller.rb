@@ -28,11 +28,10 @@ class PostsController < ApplicationController
     params.require(:post).permit(:body)
   end
 
-  # make sure site is editable before creating post (either public or private + unlocked)
   def editable?
     @slug = params[:post][:site]
     @site = Site.find_by(name: @slug)
-    if @site.locked && session[@site.name.to_sym] != "session-unlocked"
+    if logged_out?
       redirect_to main_path(@site.name), notice: 'Site is locked.'
     end
   end
@@ -40,7 +39,7 @@ class PostsController < ApplicationController
   def deletable?
     @post = Post.find(params[:id])
     @site = @post.site
-    if @site.locked && session[@site.name.to_sym] != "session-unlocked"
+    if logged_out?
       redirect_to main_path(@site.name), notice: 'Site is locked.'
     end
   end

@@ -4,7 +4,7 @@
     <span class="has-text-grey-light">/</span>
     <strong class=""><%= @site.name %></strong>
   </header>
-  <%= render 'posts/new_post' if postable %>
+  <%= render 'posts/new_post' if postable? %>
   <%= render 'meta_info' %>
 
 </section>

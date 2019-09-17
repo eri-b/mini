@@ -64,9 +64,8 @@ class SitesController < ApplicationController
       @site.update_attributes(locked: false)
     end
 
-    # make sure site is editable before updating password (if already set)
     def unlocked?
-      if @site.locked && session[@site.name.to_sym] != "session-unlocked"
+      if logged_out?
         redirect_to main_path(@site.name), notice: 'Site is locked.'
       end
     end
