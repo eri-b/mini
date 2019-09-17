@@ -4,7 +4,7 @@
     <span class="has-text-grey-light">/</span>
     <strong class=""><%= @site.name %></strong>
   </header>
-  <%= render 'posts/new_post' if !@site.locked || (@site.locked && session[@site.name.to_sym] == "session-unlocked") %>
+  <%= render 'posts/new_post' if postable %>
   <%= render 'meta_info' %>
 
 </section>
