@@ -3,7 +3,7 @@ module SitesHelper
     !@site.locked || (@site.locked && session[@site.name.to_sym] == "session-unlocked")
   end
 
-  def logged_out?
+  def private?
     @site.locked && session[@site.name.to_sym] != "session-unlocked"
   end
 

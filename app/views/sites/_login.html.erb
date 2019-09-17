@@ -1,4 +1,4 @@
-<% if logged_out?%>
+<% if private?%>
 <div class="dropdown-item">
   <%= form_for(:session, url: unlock_path) do |f| %>
   <%= f.hidden_field :site, value: @site.name %>

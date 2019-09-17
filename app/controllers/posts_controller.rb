@@ -31,7 +31,7 @@ class PostsController < ApplicationController
   def editable?
     @slug = params[:post][:site]
     @site = Site.find_by(name: @slug)
-    if logged_out?
+    if private?
       redirect_to main_path(@site.name), notice: 'Site is locked.'
     end
   end
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
   def deletable?
     @post = Post.find(params[:id])
     @site = @post.site
-    if logged_out?
+    if private?
       redirect_to main_path(@site.name), notice: 'Site is locked.'
     end
   end

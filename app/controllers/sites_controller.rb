@@ -65,7 +65,7 @@ class SitesController < ApplicationController
     end
 
     def unlocked?
-      if logged_out?
+      if private?
         redirect_to main_path(@site.name), notice: 'Site is locked.'
       end
     end
