@@ -35,7 +35,4 @@ document.addEventListener('turbolinks:load', () => {
     dropdown.classList.toggle('is-active');
   });
 
-  // Google Analytics
-  gtag('config', 'UA-32951228-7');
-
 });

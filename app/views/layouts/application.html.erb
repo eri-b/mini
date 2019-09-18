@@ -13,6 +13,14 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+      gtag('config', 'UA-32951228-7');
+      document.addEventListener('turbolinks:load', event => {
+          if (typeof gtag === 'function') {
+            gtag('config', 'UA-32951228-7', {
+              'page_location': event.data.url
+            });
+          }
+        });
     </script>
     <% end %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
