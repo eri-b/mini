@@ -6,10 +6,6 @@
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" >
-    <%= favicon_link_tag asset_path('fav.png') %>
-
     <% if Rails.env.production? %>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-32951228-7"></script>
@@ -19,6 +15,10 @@
       gtag('js', new Date());
     </script>
     <% end %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" >
+    <%= favicon_link_tag asset_path('fav.png') %>
+
   </head>
 
   <body>
