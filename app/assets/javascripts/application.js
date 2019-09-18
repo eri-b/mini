@@ -18,18 +18,24 @@
 
 
 document.addEventListener('turbolinks:load', () => {
+
+  // Notifications
   (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
     $notification = $delete.parentNode;
     $delete.addEventListener('click', () => {
       $notification.parentNode.removeChild($notification);
     });
   });
-  // Dropdowns
 
+  // Dropdowns
   let dropdown = document.querySelector('.dropdown');
   let dropdown_trigger = document.querySelector('.dropdown-trigger');
   dropdown_trigger.addEventListener('click', function(event) {
     event.stopPropagation();
     dropdown.classList.toggle('is-active');
   });
+
+  // Google Analytics
+  gtag('config', 'UA-32951228-7');
+
 });
