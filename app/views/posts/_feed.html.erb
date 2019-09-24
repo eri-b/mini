@@ -2,7 +2,7 @@
 <% @feed.each do |item| %>
   <li class="box">
     <%= simple_format(item.body) %>
-    <div class="date is-size-7 has-text-grey"><%= local_time(item.updated_at.to_formatted_s(:short), '%b %e') %></div>
+    <div class="date is-size-7 has-text-grey"><%= local_time(item.created_at.to_formatted_s(:short), '%b %e') %></div>
     <% if !@site.locked || (@site.locked && session[@site.name.to_sym] == "session-unlocked") %>
       <%= link_to "Delete", post_path(item.id), data: { confirm: "Are you sure?" }, method: :delete, class: "delete is-small" %>
     <% end %>

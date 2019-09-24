@@ -3,7 +3,7 @@
   <%= form_for @site, url: site_pass_path(@site.name), :html => {:class => ''}, method: :patch do |f| %>
   <div class="field has-addons">
     <div class="control">
-    <%= f.password_field :password, class: "input" %>
+    <%= f.password_field :password, required:true, class: "input" %>
     </div>
     <div class="control">
     <%= f.submit "Add password", class: "button" %>
