@@ -6,7 +6,8 @@ class PostsController < ApplicationController
 
     @site = Site.find_by(name: params[:post][:site])
     @post = @site.posts.build(post_params)
-
+    #puts @post.body
+    #@post.body = clean_links @post.body
     if @post.save
       redirect_to main_path(@post.site.name)
     else
@@ -42,6 +43,10 @@ class PostsController < ApplicationController
     if private?
       redirect_to main_path(@site.name), notice: 'Site is locked.'
     end
+  end
+
+  def clean_links html
+   html.gsub(/\<a href=["'](.*?)["']\>(.*?)\<\/a\>/mi, '<a href="\1" rel="nofollow ugc" target="_new" >\2</a>')
   end
 
 end
