@@ -1,13 +1,13 @@
 class PostsController < ApplicationController
   before_action :editable?, only: [:create]
   before_action :deletable?, only: [:destroy]
+  after_action :no_posts?, only: [:destroy]
 
   def create
 
     @site = Site.find_by(name: params[:post][:site])
     @post = @site.posts.build(post_params)
-    #puts @post.body
-    #@post.body = clean_links @post.body
+
     if @post.save
       redirect_to main_path(@post.site.name)
     else
@@ -47,6 +47,14 @@ class PostsController < ApplicationController
 
   def clean_links html
    html.gsub(/\<a href=["'](.*?)["']\>(.*?)\<\/a\>/mi, '<a href="\1" rel="nofollow ugc" target="_new" >\2</a>')
+  end
+
+  def no_posts?
+    if @site.locked && @site.posts.count == 0
+      session.delete(@site.name.to_sym)
+      @site.update_attributes(locked: false)
+      flash[:notice] = "Empty site, so password removed :)"
+    end
   end
 
 end
