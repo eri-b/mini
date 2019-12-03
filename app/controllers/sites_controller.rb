@@ -82,12 +82,15 @@ class SitesController < ApplicationController
       if last_post.present?
         activity_limit = 31
         @days_til_expire = activity_limit - (Time.zone.now - last_post.updated_at)/(3600*24)
-        if @days_til_expire < 0
+        if @days_til_expire < 0 && !protected_sites
           @site.destroy
           redirect_to main_path(@site.name), notice: 'Previous site here was deleted due to inactivity.'
         end
       end
     end
 
+    def protected_sites
+      @site.name == "faq" || @site.name == "yoursitename"
+    end
 
 end
