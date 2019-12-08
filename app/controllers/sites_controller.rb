@@ -15,7 +15,7 @@ class SitesController < ApplicationController
     end
 
     @feed = @site.posts.order("created_at DESC")
-
+    @protected = protected_sites
   end
 
   def home
