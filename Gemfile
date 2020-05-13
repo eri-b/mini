@@ -24,6 +24,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 
+# recommended here: https://devcenter.heroku.com/articles/h12-request-timeout-in-ruby-mri
+gem 'rack-timeout'
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt',         '3.1.12'
 

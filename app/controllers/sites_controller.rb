@@ -14,7 +14,7 @@ class SitesController < ApplicationController
       end
     end
 
-    @feed = @site.posts.order("created_at DESC")
+    @feed = @site.posts.order("created_at DESC").limit(300)
     @protected = protected_sites
   end
 
