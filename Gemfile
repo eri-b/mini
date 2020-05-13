@@ -27,6 +27,9 @@ gem 'jbuilder', '~> 2.5'
 # recommended here: https://devcenter.heroku.com/articles/h12-request-timeout-in-ruby-mri
 gem 'rack-timeout'
 
+# recommended here: https://devcenter.heroku.com/articles/language-runtime-metrics-ruby#getting-started
+gem "barnes"
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt',         '3.1.12'
 
