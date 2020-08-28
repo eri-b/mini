@@ -23,6 +23,12 @@
         });
     </script>
     <% end %>
+    <meta property="og:title" content="Instant, self-destructing websites.">
+    <meta property="og:site_name" content="Sdnotes">
+    <meta property="og:image" content="<%= asset_url('sd300.jpg') %>">
+
+    <meta property="og:url" content="https://sdnotes.com">
+    <meta name="twitter:card" content="summary_large_image">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" >
     <%= favicon_link_tag asset_path('fav.png') %>
