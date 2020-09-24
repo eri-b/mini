@@ -8,10 +8,10 @@ class PostsController < ApplicationController
     @site = Site.find_by(name: params[:post][:site])
     @post = @site.posts.build(post_params)
 
-    if @post.save
+    if @site.posts.count < 4000 && @post.save
       redirect_to main_path(@post.site.name)
     else
-      render 'sites/show'
+      redirect_to main_path(@post.site.name), notice: "Exceeded post limit or there's some other problem, contact support"
     end
   end
 
