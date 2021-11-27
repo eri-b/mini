@@ -1,0 +1,13 @@
+<% if @site.locked && logged_in? %>
+
+<div class="dropdown-item">
+  
+  <% if @premium %>
+    <p>Premium subscription [$2/mo]. <a>Remove</a></p>
+  <% else %>
+    <p>Prevent self-destruction?</p>
+    <p><a>Upgrade for $2/month</a></p>
+  <% end %>
+</div>
+
+<% end %>

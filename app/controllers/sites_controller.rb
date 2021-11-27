@@ -13,7 +13,7 @@ class SitesController < ApplicationController
         redirect_to main_path("faq"), alert: "Site not saved. Letter, numbers, and dashes accepted."
       end
     end
-
+    @premium = [true, false].sample # wire this up to Stripe
     @feed = @site.posts.order("created_at DESC").limit(300)
     @protected = protected_sites
   end

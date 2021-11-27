@@ -13,10 +13,11 @@
         <%= render 'when-locked'  %>
         <%= render 'login'  %>
         <%= render 'addpass' %>
+        
         <%= render 'intro' %>
         <% if @feed.present? %>
           <div class="dropdown-item">
-            <% if !@protected %>
+            <% if !@protected && !@premium %>
             <p id="expire"><%= @days_til_expire.to_i %> days until self-destruction</p>
             <p class="has-text-grey">Site is deleted after 30 days of inactivity</p>
             <% else %>
@@ -24,6 +25,7 @@
             <% end %>
           </div>
         <% end %>
+        <%= render 'premium' %>
         <hr class="dropdown-divider">
         <div class="dropdown-item">
           <a href="/faq" target="_blank">FAQ</a>
