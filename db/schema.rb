@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_30_213006) do
+ActiveRecord::Schema.define(version: 2021_12_02_192107) do
 
   create_table "posts", force: :cascade do |t|
     t.text "body"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_11_30_213006) do
     t.string "password_digest"
     t.boolean "locked"
     t.string "customer_stripe_id"
-    t.boolean "has_valid_card", default: false
+    t.boolean "premium", default: false
   end
 
 end

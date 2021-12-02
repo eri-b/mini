@@ -24,6 +24,9 @@ module Billing
       handle_errors(e)
     end
   end
+  def handle_errors(e)
+    BILLING_LOGGER.error(e)
+  end
 
 
   module Loggers
