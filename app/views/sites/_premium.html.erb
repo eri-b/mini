@@ -3,7 +3,7 @@
 <div class="dropdown-item">
   
   <% if @premium %>
-    <p>Premium subscription [$2/mo]. <a>Remove</a></p>
+    <p>Premium subscription [$2/mo]. <a href="<%= billing_path(@site) %>" data-method="delete">Remove</a></p>
   <% else %>
     <p>Prevent self-destruction?</p>
     <p><a href="<%= billing_index_path %>">Upgrade for $2/month</a></p>

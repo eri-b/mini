@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_02_192107) do
+ActiveRecord::Schema.define(version: 2021_12_03_182705) do
 
   create_table "posts", force: :cascade do |t|
     t.text "body"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2021_12_02_192107) do
     t.boolean "locked"
     t.string "customer_stripe_id"
     t.boolean "premium", default: false
+    t.string "subscription_id"
   end
 
 end

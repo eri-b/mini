@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  resources :billing, only: [:index, :create]
+  resources :billing, only: [:index, :create, :destroy]
 
   get  '/:id', to: 'sites#show', as: 'main', constraints: { id: /[^\/]+/ }
 

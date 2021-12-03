@@ -12,6 +12,7 @@ module Billing
     Stripe::Price.list({lookup_keys: array})
   end
 
+
   def handle_stripe_subscriptions(&block)
     begin
 
@@ -24,9 +25,11 @@ module Billing
       handle_errors(e)
     end
   end
+
   def handle_errors(e)
     BILLING_LOGGER.error(e)
   end
+
 
 
   module Loggers
