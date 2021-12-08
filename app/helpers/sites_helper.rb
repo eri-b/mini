@@ -10,4 +10,8 @@ module SitesHelper
   def logged_in?
     session[@site.name.to_sym] == "session-unlocked" && @site.locked
   end
+
+  def current_site
+    Site.find_by(name: session[:current_site])
+  end
 end

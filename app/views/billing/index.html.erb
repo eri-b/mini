@@ -1,0 +1,32 @@
+<style>
+    input[type=submit]{
+        color: #fff;
+        background-color: #0069d9;
+        box-shadow: 0 0 0 0 rgba(38, 143, 255, 0.5);
+        border: none;
+        display: inline-block;
+        font-weight: 400;
+        line-height: 1.5;
+        text-align: center;
+        text-decoration: none;
+        vertical-align: middle;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        border-radius: 1.5rem;
+        margin-top: 1em;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+</style>
+
+
+<div id="content" class="container " >
+  <h1 class="is-size-2 mb-4"><%= current_site.name %></h1>
+
+  <%= stripe_javascript_tag %>
+  <%= stripe_elements_tag submit_path: billing_index_path %>
+
+</div>
