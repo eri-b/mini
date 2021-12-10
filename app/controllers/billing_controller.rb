@@ -7,8 +7,10 @@ class BillingController < ApplicationController
 
   def create
     handle_stripe_subscriptions do
+
+      #=> TDOD use regex to validate email
       unless current_site.customer_stripe_id?
-      customer = Stripe::Customer.create({source:params[:stripeToken] ,name: current_site.name})
+      customer = Stripe::Customer.create({source:params[:stripeToken] ,name: current_site.name, email:params[:email]})
       current_site.update(customer_stripe_id: customer.id) 
       end
 

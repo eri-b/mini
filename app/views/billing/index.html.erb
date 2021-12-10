@@ -30,3 +30,14 @@
   <%= stripe_elements_tag submit_path: billing_index_path %>
 
 </div>
+
+<script type="text/javascript" charset="utf-8">
+  setTimeout(()=>{
+      const formStripe = document.getElementById('stripe-form')
+      const email =  document.createElement("input")
+      email.name = "email"
+      email.type = 'email'
+      email.placeholder = "email@example.com"
+      formStripe.prepend(email)
+  },1)
+</script>
