@@ -6,7 +6,7 @@
 
 This branch is archived as a reference for [this blog post](https://unfoundedlabs.com/blog/web-accounts).
 
-Other branches in this repo have diverted a bit.
+Newer branches in this repo (including main/prod) have diverted a bit.
 
 ********
 
