@@ -1,6 +1,6 @@
 ### [croak.so](https://croak.so)
 
-This branch is archived for reference to [this post](https://unfoundedlabs.com/blog/web-accounts).
+This branch is archived as a reference for [this blog post](https://unfoundedlabs.com/blog/web-accounts).
 
 Other branches in this repo have diverted a bit.
 
