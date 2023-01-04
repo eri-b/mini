@@ -90,6 +90,15 @@ section#content{
     .date{
       margin-top:.5em;
     }
+    .hide-til-hover{
+      opacity:0;
+      transition:0.5s;
+    }
+    &:hover{
+      .hide-til-hover{
+        opacity: 1;
+      }
+    }
   }
 }
 
