@@ -11,7 +11,7 @@ class PostsController < ApplicationController
     if @site.posts.count < 4000 && @post.save
       redirect_to main_path(@post.site.name)
     else
-      redirect_to main_path(@post.site.name), notice: "Probably failed some validation, or if it's our fault, contact support"
+      redirect_to main_path(@post.site.name), notice: "Probably failed some validation. Or maybe we failed (if so email us)"
     end
   end
 
