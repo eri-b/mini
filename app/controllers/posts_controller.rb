@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   def no_posts?
     if @site.locked && @site.posts.count == 0
       session.delete(@site.name.to_sym)
-      @site.update_attributes(locked: false)
+      @site.update(locked: false)
       flash[:notice] = "Empty site, so password removed :)"
     end
   end

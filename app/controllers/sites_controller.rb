@@ -24,7 +24,7 @@ class SitesController < ApplicationController
   end
 
   def add_password
-    if @site.update_attributes(pass_params)
+    if @site.update(pass_params)
       lock_site
       redirect_to site_pass_path(@site.name), notice: "Updated password"
     else
@@ -56,12 +56,12 @@ class SitesController < ApplicationController
     end
 
     def lock_site
-      @site.update_attributes(locked: true)
+      @site.update(locked: true)
     end
 
     def unlock_site
       session.delete(@site.name.to_sym)
-      @site.update_attributes(locked: false)
+      @site.update(locked: false)
     end
 
     def unlocked?
