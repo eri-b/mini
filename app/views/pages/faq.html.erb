@@ -1,0 +1,38 @@
+<% provide(:title, 'faq') %>
+
+<section id="meta">
+  <header>
+    <span class="has-text-grey-light">/</span>
+    <strong>faq</strong>
+  </header>
+</section>
+
+<section id="content">
+  <ul id="feed">
+    <li class="box">
+      <strong>What is this?</strong>
+      <p>Maybe the world's easiest website maker?</p>
+      <p>No account, no password.</p>
+      <p>
+        Go to <%= link_to 'sdnotes.com/yoursitename', main_path('yoursitename') %>
+        and add things - now it's your site.
+      </p>
+    </li>
+
+    <li class="box">
+      <strong>Anything else?</strong>
+      <p>All sites are public. Adding a password only restricts posting.</p>
+      <p>All sites self-destruct if 30 days pass without a new post. No cybersquatting :)</p>
+    </li>
+
+    <li class="box">
+      <strong>Other</strong>
+      <p><%= link_to 'Why?', 'https://unfoundedlabs.com/blog/web-accounts' %></p>
+      <p>sdnotes = standard definition notes</p>
+      <p><%= mail_to 'eric@unfoundedlabs.com' %></p>
+      <p><%= link_to 'Selected Posts', 'https://x.com/sd_notes' %></p>
+      <p><%= number_with_delimiter(@site_total) %> sites created</p>
+      <p><%= number_with_delimiter(@post_total) %> notes posted</p>
+    </li>
+  </ul>
+</section>

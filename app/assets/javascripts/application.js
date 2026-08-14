@@ -30,9 +30,11 @@ document.addEventListener('turbolinks:load', () => {
   // Dropdowns
   let dropdown = document.querySelector('.dropdown');
   let dropdown_trigger = document.querySelector('.dropdown-trigger');
-  dropdown_trigger.addEventListener('click', function(event) {
-    event.stopPropagation();
-    dropdown.classList.toggle('is-active');
-  });
+  if (dropdown && dropdown_trigger) {
+    dropdown_trigger.addEventListener('click', function(event) {
+      event.stopPropagation();
+      dropdown.classList.toggle('is-active');
+    });
+  }
 
 });
